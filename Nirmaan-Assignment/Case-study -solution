@@ -1,0 +1,120 @@
+Nirmaan AI Case Study – Speech Scoring Tool
+Automated Spoken Transcript Evaluation using Cohere Embeddings & NLP
+📌 1. Problem Statement
+Nirmaan Foundation required a tool to automatically evaluate students' spoken English introductions based on various quality metrics—such as clarity, structure, engagement, and content relevance.
+Traditional evaluation by human instructors is:
+Slow
+Inconsistent
+Not scalable
+Requires constant manual effort
+The goal is to use AI/ML to automate spoken transcript quality scoring.
+📌 2. Objective
+To build an AI-powered Speech Scoring Tool that evaluates a student’s introduction transcript and produces:
+✔ Overall Score (0–100)
+✔ Keyword Detection (name, age, class, hobbies, goals, etc.)
+✔ Clarity Score (based on filler words)
+✔ Engagement Score
+✔ Semantic Similarity to ideal introduction
+✔ Flow Score (salutation → intro → core → closure)
+✔ Visual Score Breakdown using Plotly
+✔ Easy-to-use Streamlit Interface
+This ensures fast, consistent, and objective evaluation of students’ speaking performance.
+📘 3. Approach & Implementation
+### 3.1 Technology Stack
+Component	Technology
+Frontend	Streamlit
+NLP	Cohere Embed Model (embed-multilingual-v3.0)
+ML Metric	Cosine Similarity
+Visualization	Plotly
+Language	Python
+Preprocessing	Regex, NumPy
+### 3.2 Processing Flow
+Step 1: Extract Text & Clean
+Tokenize words
+Convert to lowercase
+Remove noise
+Count total words
+Step 2: Detect Key Information
+Check for keywords like:
+name, age, class, hobby, goals, family, interest, unique
+Calculate keyword ratio = number of keywords found ÷ total keywords.
+Step 3: Speech Flow Detection
+Verify presence of:
+Greeting (hello, hi, good morning)
+Introduction (“my name is…”, “myself…”)
+Core info (class, hobbies, family)
+Ending (“thank you”)
+Flow Score = segments_present / 4
+Step 4: Clarity Scoring using Filler Words
+If transcript contains words like:
+um, like, you know, hmm, ah
+Higher filler words → lower clarity.
+Clarity = 1 – min(filler_rate / 12, 1)
+Step 5: Semantic Similarity
+
+Use Cohere embeddings to compare:
+
+Student transcript vs Ideal introduction rubric
+
+Ideal rubric:
+
+“A structured spoken introduction including name, age, class, hobbies, goals and ending well.”
+
+Cosine Similarity gives the semantic score.
+
+Step 6: Weighted Score Calculation
+Overall Score =
+(0.45 × Content) +
+(0.30 × Clarity) +
+(0.25 × Engagement)
+
+Step 7: Visualization
+
+A colorful bar chart showing score breakdown
+
+Detected keywords displayed with colored tags
+
+JSON summary for debugging
+
+🖥 4. User Interface (Streamlit)
+
+The UI contains:
+
+✔ Text area to paste transcript
+✔ “Score” Button
+✔ Overall Score with Progress Bar
+✔ Bar Graph (Plotly)
+✔ Keyword chips (green/red)
+✔ Detailed numerical metrics
+
+This UI is simple enough for:
+
+Teachers
+
+Students
+
+NGOs / Skill Training Centers
+
+📊 5. Output Example
+
+Overall Score: 82/100
+Semantic Similarity: 0.89
+Flow Score: 0.75
+Filler Rate: 3%
+Keywords Detected: name, age, class, hobby, goals
+
+Graph, keyword highlights, and JSON analysis appear immediately.
+
+🚀 6. Applications
+For NGOs & Skill Development Centers
+Evaluate spoken English instantly
+Track student progress
+Provide actionable feedback
+For Schools
+Oral introduction assessments
+Reduce teacher load
+For EdTech Companies
+Automated speaking modules
+Integration into learning platforms
+For Personality Development Training
+Analyze clarity & presentation skills
