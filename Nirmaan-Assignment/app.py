@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import plotly.graph_objects as go
 
-cohere_api_key = "IDlfxdy11paDxht8zQKuLQZkR61dhaPRTwdNzkpF"
+cohere_api_key = "your api key"
 co = cohere.Client(cohere_api_key)
 
 keywords = ["name","age","class","hobby","hobbies","interest","goals","goal","family","unique","dream"]
@@ -93,3 +93,4 @@ if st.button("Score"):
         "Clarity Score": clarity,
         "Engagement Score": engagement,
     })
+
